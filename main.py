@@ -26,7 +26,8 @@ class Application(QMainWindow):
 
         self.ui.btn_enc.setChecked(True)
 
-        self.abc = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяabcdefghijklmnopqrstuvwxyz ."  # 61 - prime number
+        self.abc = "abcdefghijklmnopqrstuvwxyzабвгдеёжзийклмнопрстуфхцчшщъыьэюя ."  # 61 - prime number
+        # self.abc = "abcdefghijklmnopqrstuvwxyz"  # 61 - prime number
 
         self.ui.proc_button.clicked.connect(self.process_data)
         self.ui.open_file.triggered.connect(self.open)
@@ -65,13 +66,16 @@ class Application(QMainWindow):
         return text
 
     def crypt_text(self, choice):
-        text = ''
-        key = numpy.reshape(self.validate_key(), (self.matrix_size, self.matrix_size))
-        plaintext = self.validate_plain_text()
-        plaintext = numpy.reshape(plaintext, (len(plaintext) // self.matrix_size, self.matrix_size))
-        if numpy.linalg.det(key) == 0:
-            return QMessageBox.information(self, "Ошибка", "Определитель == 0", QMessageBox.Ok)
-        return 1
+        text = []
+        if choice == self.Action.ENCRYPT.value:
+            key = numpy.reshape(self.validate_key(), (self.matrix_size, self.matrix_size))
+            if numpy.linalg.det(key) == 0:
+                return QMessageBox.information(self, "Ошибка", "Определитель == 0", QMessageBox.Ok)
+            plaintext = self.validate_plain_text()
+            plaintext = numpy.reshape(plaintext, (len(plaintext) // self.matrix_size, self.matrix_size))
+            for item in plaintext:
+                text.append(list(map(lambda x: x % len(self.abc), numpy.matmul(key, item))))
+            return text
 
     def open(self):
         file_name = QFileDialog.getOpenFileName(self, "Открыть файл", ".", "All Files (*)")
