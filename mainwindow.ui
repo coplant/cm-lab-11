@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+    <class>MainWindow</class>
+    <widget class="QMainWindow" name="MainWindow">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>591</width>
+                <height>261</height>
+            </rect>
+        </property>
+        <property name="minimumSize">
+            <size>
+                <width>591</width>
+                <height>261</height>
+            </size>
+        </property>
+        <property name="maximumSize">
+            <size>
+                <width>591</width>
+                <height>261</height>
+            </size>
+        </property>
+        <property name="windowTitle">
+            <string>Лабораторная работа 11: Шифр Хилла</string>
+        </property>
+        <widget class="QWidget" name="centralwidget">
+            <widget class="QTextEdit" name="plain_text">
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>10</y>
+                        <width>361</width>
+                        <height>81</height>
+                    </rect>
+                </property>
+                <property name="inputMethodHints">
+                    <set>Qt::ImhMultiLine</set>
+                </property>
+            </widget>
+            <widget class="QTextEdit" name="cipher_text">
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>100</y>
+                        <width>361</width>
+                        <height>81</height>
+                    </rect>
+                </property>
+            </widget>
+            <widget class="QPushButton" name="proc_button">
+                <property name="geometry">
+                    <rect>
+                        <x>490</x>
+                        <y>190</y>
+                        <width>91</width>
+                        <height>41</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Обработать</string>
+                </property>
+            </widget>
+            <widget class="QLineEdit" name="line_key">
+                <property name="geometry">
+                    <rect>
+                        <x>120</x>
+                        <y>190</y>
+                        <width>361</width>
+                        <height>41</height>
+                    </rect>
+                </property>
+                <property name="echoMode">
+                    <enum>QLineEdit::Normal</enum>
+                </property>
+                <property name="placeholderText">
+                    <string>Ключ</string>
+                </property>
+            </widget>
+            <widget class="QRadioButton" name="btn_enc">
+                <property name="enabled">
+                    <bool>true</bool>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>190</y>
+                        <width>121</width>
+                        <height>22</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Зашифровать</string>
+                </property>
+            </widget>
+            <widget class="QRadioButton" name="btn_dec">
+                <property name="geometry">
+                    <rect>
+                        <x>10</x>
+                        <y>210</y>
+                        <width>101</width>
+                        <height>22</height>
+                    </rect>
+                </property>
+                <property name="text">
+                    <string>Расшифровать</string>
+                </property>
+            </widget>
+            <widget class="QTableWidget" name="key_table">
+                <property name="geometry">
+                    <rect>
+                        <x>380</x>
+                        <y>10</y>
+                        <width>201</width>
+                        <height>171</height>
+                    </rect>
+                </property>
+                <property name="minimumSize">
+                    <size>
+                        <width>191</width>
+                        <height>171</height>
+                    </size>
+                </property>
+                <property name="maximumSize">
+                    <size>
+                        <width>211</width>
+                        <height>171</height>
+                    </size>
+                </property>
+                <property name="verticalScrollBarPolicy">
+                    <enum>Qt::ScrollBarAlwaysOff</enum>
+                </property>
+                <property name="horizontalScrollBarPolicy">
+                    <enum>Qt::ScrollBarAsNeeded</enum>
+                </property>
+                <property name="sizeAdjustPolicy">
+                    <enum>QAbstractScrollArea::AdjustToContents</enum>
+                </property>
+                <property name="gridStyle">
+                    <enum>Qt::SolidLine</enum>
+                </property>
+                <property name="columnCount">
+                    <number>0</number>
+                </property>
+                <attribute name="horizontalHeaderVisible">
+                    <bool>false</bool>
+                </attribute>
+                <attribute name="verticalHeaderVisible">
+                    <bool>false</bool>
+                </attribute>
+            </widget>
+        </widget>
+        <widget class="QMenuBar" name="menuBar">
+            <property name="geometry">
+                <rect>
+                    <x>0</x>
+                    <y>0</y>
+                    <width>591</width>
+                    <height>21</height>
+                </rect>
+            </property>
+            <widget class="QMenu" name="menuFile">
+                <property name="title">
+                    <string>Файл</string>
+                </property>
+                <addaction name="open_file"/>
+                <addaction name="save_file"/>
+            </widget>
+            <addaction name="menuFile"/>
+        </widget>
+        <action name="open_file">
+            <property name="text">
+                <string>Открыть</string>
+            </property>
+        </action>
+        <action name="save_file">
+            <property name="text">
+                <string>Сохранить</string>
+            </property>
+        </action>
+    </widget>
+    <resources/>
+    <connections/>
+</ui>
