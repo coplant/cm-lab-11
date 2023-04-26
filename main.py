@@ -65,6 +65,13 @@ class Application(QMainWindow):
             text.append(self.abc.index(" "))
         return text
 
+    def numbers_to_text(self, text):
+        result = ""
+        for row in text:
+            for char in row:
+                result += self.abc[char]
+        return result
+
     def crypt_text(self, choice):
         text = []
         if choice == self.Action.ENCRYPT.value:
@@ -75,7 +82,7 @@ class Application(QMainWindow):
             plaintext = numpy.reshape(plaintext, (len(plaintext) // self.matrix_size, self.matrix_size))
             for item in plaintext:
                 text.append(list(map(lambda x: x % len(self.abc), numpy.matmul(key, item))))
-            return text
+            return self.numbers_to_text(text)
 
     def open(self):
         file_name = QFileDialog.getOpenFileName(self, "Открыть файл", ".", "All Files (*)")
