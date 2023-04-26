@@ -27,7 +27,7 @@ class Application(QMainWindow):
         self.ui.btn_enc.setChecked(True)
 
         self.abc = "abcdefghijklmnopqrstuvwxyzабвгдеёжзийклмнопрстуфхцчшщъыьэюя ."  # 61 - prime number
-        # self.abc = "abcdefghijklmnopqrstuvwxyz"  # 61 - prime number
+        # self.abc = "abcdefghijklmnopqrstuvwxyz"
 
         self.ui.proc_button.clicked.connect(self.process_data)
         self.ui.open_file.triggered.connect(self.open)
@@ -74,15 +74,49 @@ class Application(QMainWindow):
 
     def crypt_text(self, choice):
         text = []
-        if choice == self.Action.ENCRYPT.value:
-            key = numpy.reshape(self.validate_key(), (self.matrix_size, self.matrix_size))
-            if numpy.linalg.det(key) == 0:
-                return QMessageBox.information(self, "Ошибка", "Определитель == 0", QMessageBox.Ok)
-            plaintext = self.validate_plain_text()
-            plaintext = numpy.reshape(plaintext, (len(plaintext) // self.matrix_size, self.matrix_size))
-            for item in plaintext:
-                text.append(list(map(lambda x: x % len(self.abc), numpy.matmul(key, item))))
-            return self.numbers_to_text(text)
+        key = numpy.reshape(self.validate_key(), (self.matrix_size, self.matrix_size))
+        det_key = numpy.linalg.det(key)
+        if det_key == 0:
+            return QMessageBox.information(self, "Ошибка", "Определитель == 0", QMessageBox.Ok)
+        if choice == self.Action.DECRYPT.value:
+            key = self.mod_matrix_inversion(key, len(self.abc))
+        key = numpy.rint(key).astype(int)
+        plaintext = self.validate_plain_text()
+        plaintext = numpy.reshape(plaintext, (len(plaintext) // self.matrix_size, self.matrix_size))
+        for item in plaintext:
+            text.append(list(map(lambda x: int(x % len(self.abc)), numpy.matmul(key, item))))
+        return self.numbers_to_text(text)
+
+    def mod_matrix_inversion(self, matrix, p):
+        n = len(matrix)
+        A = numpy.matrix(matrix)
+        adj = numpy.zeros(shape=(n, n))
+        for i in range(0, n):
+            for j in range(0, n):
+                adj[i][j] = ((-1)**(i + j) * int(round(numpy.linalg.det(self.minor(matrix, j, i))))) % p
+        return (self.mod_inversion(int(round(numpy.linalg.det(matrix))), p) * adj) % p
+
+    def mod_inversion(self, a, p):
+        for i in range(1, p):
+            if (i * a) % p == 1:
+                return i
+        raise ValueError(str(a) + " has no inverse mod " + str(p))
+
+    def minor(self, matrix, i, j):
+        matrix = numpy.array(matrix)
+        minor = numpy.zeros(shape=(len(matrix) - 1, len(matrix) - 1))
+        p = 0
+        for s in range(0, len(minor)):
+            if p == i:
+                p = p + 1
+            q = 0
+            for t in range(0, len(minor)):
+                if q == j:
+                    q = q + 1
+                minor[s][t] = matrix[p][q]
+                q = q + 1
+            p = p + 1
+        return minor
 
     def open(self):
         file_name = QFileDialog.getOpenFileName(self, "Открыть файл", ".", "All Files (*)")
