@@ -14,9 +14,8 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
                            QIcon, QImage, QKeySequence, QLinearGradient,
                            QPainter, QPalette, QPixmap, QRadialGradient,
                            QTransform)
-from PySide6.QtWidgets import (QAbstractScrollArea, QApplication, QHeaderView, QLineEdit,
-                               QMainWindow, QMenu, QMenuBar, QPushButton,
-                               QRadioButton, QSizePolicy, QTableWidget, QTableWidgetItem,
+from PySide6.QtWidgets import (QApplication, QLineEdit, QMainWindow, QMenu,
+                               QMenuBar, QPushButton, QRadioButton, QSizePolicy,
                                QTextEdit, QWidget)
 
 
@@ -24,9 +23,9 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(591, 261)
-        MainWindow.setMinimumSize(QSize(591, 261))
-        MainWindow.setMaximumSize(QSize(591, 261))
+        MainWindow.resize(481, 261)
+        MainWindow.setMinimumSize(QSize(481, 261))
+        MainWindow.setMaximumSize(QSize(481, 261))
         self.open_file = QAction(MainWindow)
         self.open_file.setObjectName(u"open_file")
         self.save_file = QAction(MainWindow)
@@ -35,17 +34,17 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.plain_text = QTextEdit(self.centralwidget)
         self.plain_text.setObjectName(u"plain_text")
-        self.plain_text.setGeometry(QRect(10, 10, 361, 81))
+        self.plain_text.setGeometry(QRect(10, 10, 461, 81))
         self.plain_text.setInputMethodHints(Qt.ImhMultiLine)
         self.cipher_text = QTextEdit(self.centralwidget)
         self.cipher_text.setObjectName(u"cipher_text")
-        self.cipher_text.setGeometry(QRect(10, 100, 361, 81))
+        self.cipher_text.setGeometry(QRect(10, 100, 461, 81))
         self.proc_button = QPushButton(self.centralwidget)
         self.proc_button.setObjectName(u"proc_button")
-        self.proc_button.setGeometry(QRect(490, 190, 91, 41))
+        self.proc_button.setGeometry(QRect(380, 190, 91, 41))
         self.line_key = QLineEdit(self.centralwidget)
         self.line_key.setObjectName(u"line_key")
-        self.line_key.setGeometry(QRect(120, 190, 361, 41))
+        self.line_key.setGeometry(QRect(120, 190, 251, 41))
         self.line_key.setEchoMode(QLineEdit.Normal)
         self.btn_enc = QRadioButton(self.centralwidget)
         self.btn_enc.setObjectName(u"btn_enc")
@@ -54,22 +53,10 @@ class Ui_MainWindow(object):
         self.btn_dec = QRadioButton(self.centralwidget)
         self.btn_dec.setObjectName(u"btn_dec")
         self.btn_dec.setGeometry(QRect(10, 210, 101, 22))
-        self.key_table = QTableWidget(self.centralwidget)
-        self.key_table.setObjectName(u"key_table")
-        self.key_table.setGeometry(QRect(380, 10, 201, 171))
-        self.key_table.setMinimumSize(QSize(191, 171))
-        self.key_table.setMaximumSize(QSize(211, 171))
-        self.key_table.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-        self.key_table.setHorizontalScrollBarPolicy(Qt.ScrollBarAsNeeded)
-        self.key_table.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
-        self.key_table.setGridStyle(Qt.SolidLine)
-        self.key_table.setColumnCount(0)
-        self.key_table.horizontalHeader().setVisible(False)
-        self.key_table.verticalHeader().setVisible(False)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menuBar = QMenuBar(MainWindow)
         self.menuBar.setObjectName(u"menuBar")
-        self.menuBar.setGeometry(QRect(0, 0, 591, 21))
+        self.menuBar.setGeometry(QRect(0, 0, 481, 21))
         self.menuFile = QMenu(self.menuBar)
         self.menuFile.setObjectName(u"menuFile")
         MainWindow.setMenuBar(self.menuBar)
@@ -81,7 +68,6 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         QMetaObject.connectSlotsByName(MainWindow)
-
     # setupUi
 
     def retranslateUi(self, MainWindow):
@@ -104,3 +90,4 @@ class Ui_MainWindow(object):
                                                         None))
         self.menuFile.setTitle(QCoreApplication.translate("MainWindow", u"\u0424\u0430\u0439\u043b", None))
     # retranslateUi
+

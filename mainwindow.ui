@@ -6,19 +6,19 @@
             <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>591</width>
+                <width>481</width>
                 <height>261</height>
             </rect>
         </property>
         <property name="minimumSize">
             <size>
-                <width>591</width>
+                <width>481</width>
                 <height>261</height>
             </size>
         </property>
         <property name="maximumSize">
             <size>
-                <width>591</width>
+                <width>481</width>
                 <height>261</height>
             </size>
         </property>
@@ -31,7 +31,7 @@
                     <rect>
                         <x>10</x>
                         <y>10</y>
-                        <width>361</width>
+                        <width>461</width>
                         <height>81</height>
                     </rect>
                 </property>
@@ -44,7 +44,7 @@
                     <rect>
                         <x>10</x>
                         <y>100</y>
-                        <width>361</width>
+                        <width>461</width>
                         <height>81</height>
                     </rect>
                 </property>
@@ -52,7 +52,7 @@
             <widget class="QPushButton" name="proc_button">
                 <property name="geometry">
                     <rect>
-                        <x>490</x>
+                        <x>380</x>
                         <y>190</y>
                         <width>91</width>
                         <height>41</height>
@@ -67,7 +67,7 @@
                     <rect>
                         <x>120</x>
                         <y>190</y>
-                        <width>361</width>
+                        <width>251</width>
                         <height>41</height>
                     </rect>
                 </property>
@@ -107,56 +107,13 @@
                     <string>Расшифровать</string>
                 </property>
             </widget>
-            <widget class="QTableWidget" name="key_table">
-                <property name="geometry">
-                    <rect>
-                        <x>380</x>
-                        <y>10</y>
-                        <width>201</width>
-                        <height>171</height>
-                    </rect>
-                </property>
-                <property name="minimumSize">
-                    <size>
-                        <width>191</width>
-                        <height>171</height>
-                    </size>
-                </property>
-                <property name="maximumSize">
-                    <size>
-                        <width>211</width>
-                        <height>171</height>
-                    </size>
-                </property>
-                <property name="verticalScrollBarPolicy">
-                    <enum>Qt::ScrollBarAlwaysOff</enum>
-                </property>
-                <property name="horizontalScrollBarPolicy">
-                    <enum>Qt::ScrollBarAsNeeded</enum>
-                </property>
-                <property name="sizeAdjustPolicy">
-                    <enum>QAbstractScrollArea::AdjustToContents</enum>
-                </property>
-                <property name="gridStyle">
-                    <enum>Qt::SolidLine</enum>
-                </property>
-                <property name="columnCount">
-                    <number>0</number>
-                </property>
-                <attribute name="horizontalHeaderVisible">
-                    <bool>false</bool>
-                </attribute>
-                <attribute name="verticalHeaderVisible">
-                    <bool>false</bool>
-                </attribute>
-            </widget>
         </widget>
         <widget class="QMenuBar" name="menuBar">
             <property name="geometry">
                 <rect>
                     <x>0</x>
                     <y>0</y>
-                    <width>591</width>
+                    <width>481</width>
                     <height>21</height>
                 </rect>
             </property>
